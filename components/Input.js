@@ -8,7 +8,7 @@ const Input = ({
     return <input
         type={type}
         name={name}
-        className={`p-2 rounded shadow-inner-2 w-full${className}`}
+        className={`p-2 rounded shadow-inner-2 w-full border focus:border-purple-500 outline-none hover:border-purple-500 ${className}`}
         placeholder={placeholder}
         {...props}
     />
