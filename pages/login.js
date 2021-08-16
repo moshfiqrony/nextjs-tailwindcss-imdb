@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import router from 'next/router';
 import Input from '../components/Input';
+import { storeLocalStorage, unprotectedRoute } from '../utils';
 
-export default function App() {
+function App() {
 	return (
 		<div className='h-screen bg-purple-900 flex justify-center items-center'>
 			<div className='bg-gray-100 rounded p-6 flex justify-center items-center flex-col 2xl:w-1/4 xl:w-1/4 lg:w-1/4 md:w-2/5 sm:w-1/2 w-2/3 space-y-5'>
@@ -19,7 +20,10 @@ export default function App() {
 						placeholder='Enter password'
 					/>
 				</div>
-				<button className='bg-purple-900 text-gray-50 p-2 pl-8 pr-8 rounded font-semibold hover: shadow-inner' onClick={() => router.push('/dashboard')}>Login</button>
+				<button className='bg-purple-900 text-gray-50 p-2 pl-8 pr-8 rounded font-semibold' onClick={() => {
+					storeLocalStorage('token', '1234')
+					router.push('/')
+				}}>Login</button>
 				<div className='text-xs'>
 				Need an account?
 				<Link href='/register'>
@@ -30,3 +34,5 @@ export default function App() {
 		</div>
 	)
 }
+
+export default unprotectedRoute(App)

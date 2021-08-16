@@ -1,8 +1,10 @@
 import Input from '../components/Input';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { unprotectedRoute } from '../utils';
 
-export default function App() {
+
+function App() {
 	const router = useRouter()
 	return (
 		<div className='h-screen bg-purple-900 flex justify-center items-center'>
@@ -25,7 +27,7 @@ export default function App() {
 						placeholder='Enter confirm password'
 					/>
 				</div>
-				<button className='bg-purple-900 text-gray-50 p-2 pl-8 pr-8 rounded font-semibold hover: shadow-inner' onClick={() => router.push('/login')}>Register</button>
+				<button className='bg-purple-900 text-gray-50 p-2 pl-8 pr-8 rounded font-semibold' onClick={() => router.push('/login')}>Register</button>
 				<div className='text-xs'>
 					Already registered?
 					<Link href='/login'>
@@ -36,3 +38,5 @@ export default function App() {
 		</div>
 	)
 }
+
+export default unprotectedRoute(App)
