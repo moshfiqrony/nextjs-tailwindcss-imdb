@@ -1,11 +1,8 @@
-import { useRouter } from 'next/dist/client/router';
-import { useEffect } from 'react';
-import {getLocalStorage} from '../utils';
+import Dashboard from '../containers/dashboard';
+import { protectedRoute } from '../utils';
 
-export default function App() {
-	const router = useRouter();
-	useEffect(() => {
-		getLocalStorage('token') ? router.push('/login') : router.push('/register')
-	})
-	return null
+const App = (props) => {
+	return <Dashboard {...props}/>
 }
+
+export default protectedRoute(App);
